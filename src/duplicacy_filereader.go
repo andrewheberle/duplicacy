@@ -53,7 +53,7 @@ func (reader *FileReader) NextFile() bool {
 		var err error
 
 		fullPath := joinPath(reader.top, reader.CurrentEntry.Path)
-		reader.CurrentFile, err = os.OpenFile(fullPath, os.O_RDONLY, 0)
+		reader.CurrentFile, err = OpenFileReadOnly(fullPath)
 		if err != nil {
 			LOG_WARN("OPEN_FAILURE", "Failed to open file for reading: %v", err)
 			reader.CurrentEntry.Size = 0
